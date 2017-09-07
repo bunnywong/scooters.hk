@@ -27,7 +27,7 @@
             <v-card>
               <v-toolbar class="cyan" dark>
                 <!-- <v-toolbar-side-icon></v-toolbar-side-icon> -->
-                <v-toolbar-title>Hong Kong e-scooters group</v-toolbar-title>
+                <v-toolbar-title>Facebook group</v-toolbar-title>
                 <v-spacer></v-spacer>
                 <v-btn icon>
                   <!-- <v-icon>search</v-icon> -->
@@ -59,6 +59,7 @@
  <script src="https://unpkg.com/vue/dist/vue.js"></script>
  <script src="https://unpkg.com/vuetify/dist/vuetify.js"></script>
  <script>
+  // import group from './javascript/group.vue'
    new Vue({
     el: '#app',
     data: {
@@ -80,7 +81,10 @@
       openNewTab: function (url) {
         window.open(url, '_blank');
       },
-    }
+    },
+    // components: {
+      // 'group-list': group
+    // },
    })
  </script>
  <script>
@@ -94,13 +98,32 @@
     FB.AppEvents.logPageView();
   };
 
-  (function(d, s, id){
+  /*(function(d, s, id){
      var js, fjs = d.getElementsByTagName(s)[0];
      if (d.getElementById(id)) {return;}
      js = d.createElement(s); js.id = id;
      js.src = "http://connect.facebook.net/en_US/sdk.js";
      fjs.parentNode.insertBefore(js, fjs);
-   }(document, 'script', 'facebook-jssdk'));
+   }(document, 'script', 'facebook-jssdk'));*/
+  /*
+    @TODO:
+      item detail
+        - ES
+          * ES pro
+          * 纤维
+          * ET mini
+        - xi mi (CNY1,999 | 12.5kg | 14% | 100kg | 18kph | 30km)
+      compare list
+        - weight
+        - max speed
+        - distance
+      Link ref
+        JASION(T Mall) - https://jasionhw.world.tmall.com
+        小米(小米米家电动滑板车) - https://www.mi.com/scooter2/
+      Menu
+        - Community
+        - Scooter
+  */
 </script>
 </body>
 </html>
