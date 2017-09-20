@@ -49,6 +49,46 @@
                 </template>
               </v-list>
             </v-card>
+
+            <!-- Calc -->
+            <v-card class="e4">
+              <v-toolbar class="cyan" dark>
+                <v-toolbar-title>續航計算</v-toolbar-title>
+                <v-spacer></v-spacer>
+              </v-toolbar>
+              <v-card-text>
+                <v-container fluid grid-list-md>
+
+                  <v-layout row wrap>
+                    <!-- Bar & Fill -->
+                    <v-flex xs9>
+                      <v-slider label="volt" v-bind:min="24" v-bind:max="60" v-model="volt"></v-slider>
+                    </v-flex>
+                    <v-flex xs3>
+                      <v-text-field v-model="volt" type="number"></v-text-field>
+                    </v-flex>
+                    <v-flex xs9>
+                      <v-slider label="mAh" v-bind:min="5000" v-bind:max="20000" v-model="mah"></v-slider>
+                    </v-flex>
+                    <v-flex xs3>
+                      <v-text-field v-model="mah" type="number"></v-text-field>
+                    </v-flex>
+                    <v-flex xs9>
+                      <v-slider label="Adjustment" v-bind:min="10" v-bind:max="12" v-model="adjustment"></v-slider>
+                    </v-flex>
+                    <v-flex xs3>
+                      <v-text-field v-model="adjustment" type="number"></v-text-field>
+                    </v-flex>
+                    <!-- Result -->
+                    <v-flex xs12>
+                      <h5>預計續航: <span >{{distanceResult}}</span> km</h5>
+                    </v-flex>
+                  </v-layout>
+                </v-container>
+              </v-card-text>
+            </v-card>
+
+
           </v-flex>
         </v-layout>
        </v-container>
@@ -78,11 +118,25 @@
         { type: 'whatsapp group', name: '香港電動滑板車群組（18+）', url: 'https://chat.whatsapp.com/invite/BhMOKoEyHj7FjfSHxyF2yS', avatar: 'http://icons.iconarchive.com/icons/dtafalonso/android-l/256/WhatsApp-icon.png'},
         { type: 'whatsapp group', name: '香港🛴電板 公開群', url: 'https://chat.whatsapp.com/invite/F1NpjYNcHTVJOuSnTAUIZp', avatar: 'http://icons.iconarchive.com/icons/dtafalonso/android-l/256/WhatsApp-icon.png'},
       ],
+      // Data default by ES 36km as example
+      volt: 36,
+      mah: 6600,
+      adjustment: 10
     },
     methods: {
       openNewTab: function (url) {
         window.open(url, '_blank');
       },
+    },
+    computed: {
+      distanceResult: function () {
+        // LI-ion计算方法(单驱)
+        // volt x mah x90%=wh
+        // wh除10-12=實际续航km
+        let wh = this.volt * (this.mah / 1000) * 0.9
+        let result = wh / this.adjustment
+        return Math.round(result)
+      }
     },
     // components: {
       // 'group-list': group
@@ -125,6 +179,8 @@
       Menu
         - Community
         - Scooter
+      ES taobao URL
+        https://world.tmall.com/item/552922711989.htm?spm=a230r.1.14.6.1f7b5011pnJzZZ&id=552922711989&cm_id=140105335569ed55e27b&abbucket=14&sku_properties=8369595:6505275
   */
 </script>
 </body>
