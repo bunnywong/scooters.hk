@@ -62,7 +62,7 @@
                   <v-layout row wrap>
                     <!-- Bar & Fill -->
                     <v-flex xs9>
-                      <v-slider label="volt" v-bind:min="24" v-bind:max="60" v-model="volt"></v-slider>
+                      <v-slider label="volt" v-bind:min="24" v-bind:max="100" v-model="volt"></v-slider>
                     </v-flex>
                     <v-flex xs3>
                       <v-text-field v-model="volt" type="number"></v-text-field>
@@ -121,7 +121,7 @@
       // Data default by ES 36km as example
       volt: 36,
       mah: 6600,
-      adjustment: 10
+      adjustment: 11
     },
     methods: {
       openNewTab: function (url) {
