@@ -43,7 +43,6 @@
                     </v-list-tile-avatar>
                     <v-list-tile-content>
                       <v-list-tile-title v-html="item.name"></v-list-tile-title>
-                      <!-- <v-list-tile-sub-title v-html="item.url"></v-list-tile-sub-title> -->
                     </v-list-tile-content>
                   </v-list-tile>
                 </template>
@@ -81,7 +80,44 @@
                     </v-flex>
                     <!-- Result -->
                     <v-flex xs12>
-                      <h5>預計續航: <span >{{distanceResult}}</span> km</h5>
+                      <h5>預計續航: <span >{{resultDistance}}</span> km</h5>
+                    </v-flex>
+                  </v-layout>
+                </v-container>
+              </v-card-text>
+            </v-card>
+
+            <v-card class="e4">
+              <v-toolbar class="cyan" dark>
+                <v-toolbar-title>sold of calc $$</v-toolbar-title>
+                <v-spacer></v-spacer>
+              </v-toolbar>
+              <v-card-text>
+                <v-container fluid grid-list-md>
+
+                  <v-layout row wrap>
+                    <!-- Bar & Fill -->
+                    <v-flex xs9>
+                      <v-slider label="cost original" v-bind:min="1000" v-bind:max="10000" v-model="costOriginal"></v-slider>
+                    </v-flex>
+                    <v-flex xs3>
+                      <v-text-field v-model="costOriginal" type="number"></v-text-field>
+                    </v-flex>
+                    <v-flex xs9>
+                      <v-slider label="assumed cost sold" v-bind:min="1000" v-bind:max="10000" v-model="costSold"></v-slider>
+                    </v-flex>
+                    <v-flex xs3>
+                      <v-text-field v-model="costSold" type="number"></v-text-field>
+                    </v-flex>
+                    <v-flex xs9>
+                      <v-slider label="consumed miles" v-bind:min="100" v-bind:max="10000" v-model="consumedMiles"></v-slider>
+                    </v-flex>
+                    <v-flex xs3>
+                      <v-text-field v-model="consumedMiles" type="number"></v-text-field>
+                    </v-flex>
+                    <!-- Result -->
+                    <v-flex xs12>
+                      <h5>$: <span >{{resultMiles}}</span> per km</h5>
                     </v-flex>
                   </v-layout>
                 </v-container>
@@ -121,7 +157,10 @@
       // Data default by ES 36km as example
       volt: 36,
       mah: 6600,
-      adjustment: 11
+      adjustment: 11,
+      costOriginal: 3680,
+      costSold: 1840,
+      consumedMiles: 1000,
     },
     methods: {
       openNewTab: function (url) {
@@ -129,14 +168,17 @@
       },
     },
     computed: {
-      distanceResult: function () {
+      resultDistance: function () {
         // LI-ion计算方法(单驱)
         // volt x mah x90%=wh
         // wh除10-12=實际续航km
         let wh = this.volt * (this.mah / 1000) * 0.9
         let result = wh / this.adjustment
         return Math.round(result)
-      }
+      },
+      resultMiles: function () {
+        return Math.round((this.costOriginal - this.costSold) / this.consumedMiles * 10) / 10
+      },
     },
     // components: {
       // 'group-list': group
