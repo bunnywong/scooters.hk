@@ -24,7 +24,7 @@
        <v-container>
          <v-layout row>
           <v-flex xs12 lg6 offset-lg3>
-            <!-- ***0 -->
+            <!-- ***1 -->
             <!-- <v-card v-show=false> -->
             <v-card v-show=true>
               <v-toolbar class="cyan" dark>
@@ -52,7 +52,7 @@
             </v-card>
 
             <!-- Calc -->
-            <!-- ***1 -->
+            <!-- ***2 -->
             <v-card class="e4" v-show=false>
               <v-toolbar class="cyan" dark>
                 <v-toolbar-title>續航計算</v-toolbar-title>
@@ -90,7 +90,7 @@
               </v-card-text>
             </v-card>
 
-            <!-- ***2 -->
+            <!-- ***3 -->
             <v-card class="e4">
               <v-toolbar class="cyan" dark>
                 <v-toolbar-title>how many miles to sold $$</v-toolbar-title>
@@ -102,26 +102,25 @@
                   <v-layout row wrap>
                     <!-- Bar & Fill -->
                     <v-flex xs9>
-                      <v-slider label="cost original $" v-bind:min="1000" v-bind:max="10000" v-model="costOriginal"></v-slider>
+                      <v-slider label="購入價 $" v-bind:min="1000" v-bind:max="10000" v-model="costOriginal"></v-slider>
                     </v-flex>
                     <v-flex xs3>
                       <v-text-field v-model="costOriginal" type="number"></v-text-field>
                     </v-flex>
                     <v-flex xs9>
-                      <v-slider label="assumed sold $" v-bind:min="1000" v-bind:max="10000" v-model="costSold"></v-slider>
+                      <v-slider label="賣出價 $" v-bind:min="1000" v-bind:max="10000" v-model="costSold"></v-slider>
                     </v-flex>
                     <v-flex xs3>
                       <v-text-field v-model="costSold" type="number"></v-text-field>
                     </v-flex>
                     <v-flex xs9>
-                      <v-slider label="miles consumed(km)" v-bind:min="100" v-bind:max="10000" v-model="consumedMiles"></v-slider>
-                    </v-flex>
+                      <v-slider label="已消耗公里 (km)" v-bind:min="100" v-bind:max="10000" v-model="consumedMiles"></v-slider> </v-flex>
                     <v-flex xs3>
                       <v-text-field v-model="consumedMiles" type="number"></v-text-field>
                     </v-flex>
                     <!-- Result -->
                     <v-flex xs12>
-                      <h2>$: <span >{{resultMiles}}</span> per km</h5>
+                      <h2>平均每公里消費 $<span >{{resultMiles}}</span></h5>
                     </v-flex>
                   </v-layout>
                 </v-container>
@@ -158,13 +157,14 @@
         { type: 'whatsapp group', name: '香港電動滑板車群組（18+）', url: 'https://chat.whatsapp.com/invite/BhMOKoEyHj7FjfSHxyF2yS', avatar: 'http://icons.iconarchive.com/icons/dtafalonso/android-l/256/WhatsApp-icon.png'},
         { type: 'whatsapp group', name: '香港🛴電板 公開群', url: 'https://chat.whatsapp.com/invite/F1NpjYNcHTVJOuSnTAUIZp', avatar: 'http://icons.iconarchive.com/icons/dtafalonso/android-l/256/WhatsApp-icon.png'},
       ],
+      // ***0
       // Data default by ES 36km as example
       volt: 36,
       mah: 6600,
       adjustment: 11,
       costOriginal: 3680,
       costSold: 1840,
-      consumedMiles: 2000,
+      consumedMiles: 4000,
     },
     methods: {
       openNewTab: function (url) {
