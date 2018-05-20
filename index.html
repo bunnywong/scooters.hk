@@ -108,13 +108,13 @@
                       <v-text-field v-model="costOriginal" type="number"></v-text-field>
                     </v-flex>
                     <v-flex xs9>
-                      <v-slider label="折舊 %" v-bind:min="1" v-bind:max="100" v-model="depreciation"></v-slider>
+                      <v-slider label="折舊 %" v-bind:min="0" v-bind:max="100" v-model="depreciation"></v-slider>
                     </v-flex>
                     <v-flex xs3>
                       <v-text-field v-model="depreciation" type="number"></v-text-field>
                     </v-flex>
                     <v-flex xs9>
-                      <v-slider label="賣出價 $" v-model="costRemain"></v-slider>
+                      <v-slider label="賣出價 $" v-model="costRemain" disabled></v-slider>
                     </v-flex>
                     <v-flex xs3>
                       <v-text-field v-model="costRemain" type="number" disabled></v-text-field>
@@ -168,9 +168,13 @@
       volt: 36,
       mah: 6600,
       adjustment: 11,
+      //
       costOriginal: 3680,
       depreciation: 50,
       consumedMiles: 4000,
+      // costOriginal: 1000,
+      // depreciation: 0,
+      // consumedMiles: 500,
     },
     methods: {
       openNewTab: function (url) {
@@ -186,11 +190,15 @@
         let result = wh / this.adjustment
         return Math.round(result)
       },
+      // ***9
       costRemain: function () {
-        return Math.round(this.costOriginal - (this.depreciation/100 * this.costOriginal))
+        if (this.depreciation > 0) {
+          return Math.round(this.costOriginal - (this.depreciation / 100 * this.costOriginal))
+        }
+        return this.costOriginal
       },
       resultMiles: function () {
-        return Math.round((this.costOriginal - this.costRemain) / this.consumedMiles * 10) / 10
+        return Math.round(this.costRemain / this.consumedMiles * 10) / 10
       },
     },
     // components: {
