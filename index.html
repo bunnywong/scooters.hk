@@ -24,7 +24,9 @@
        <v-container>
          <v-layout row>
           <v-flex xs12 lg6 offset-lg3>
-            <v-card>
+            <!-- ***0 -->
+            <!-- <v-card v-show=false> -->
+            <v-card v-show=true>
               <v-toolbar class="cyan" dark>
                 <!-- <v-toolbar-side-icon></v-toolbar-side-icon> -->
                 <v-toolbar-title>e-scooters group in Hong Kong</v-toolbar-title>
@@ -50,6 +52,7 @@
             </v-card>
 
             <!-- Calc -->
+            <!-- ***1 -->
             <v-card class="e4" v-show=false>
               <v-toolbar class="cyan" dark>
                 <v-toolbar-title>續航計算</v-toolbar-title>
@@ -87,9 +90,10 @@
               </v-card-text>
             </v-card>
 
+            <!-- ***2 -->
             <v-card class="e4">
               <v-toolbar class="cyan" dark>
-                <v-toolbar-title>sold of calc $$</v-toolbar-title>
+                <v-toolbar-title>how many miles to sold $$</v-toolbar-title>
                 <v-spacer></v-spacer>
               </v-toolbar>
               <v-card-text>
@@ -98,19 +102,19 @@
                   <v-layout row wrap>
                     <!-- Bar & Fill -->
                     <v-flex xs9>
-                      <v-slider label="cost original" v-bind:min="1000" v-bind:max="10000" v-model="costOriginal"></v-slider>
+                      <v-slider label="cost original $" v-bind:min="1000" v-bind:max="10000" v-model="costOriginal"></v-slider>
                     </v-flex>
                     <v-flex xs3>
                       <v-text-field v-model="costOriginal" type="number"></v-text-field>
                     </v-flex>
                     <v-flex xs9>
-                      <v-slider label="assumed cost sold" v-bind:min="1000" v-bind:max="10000" v-model="costSold"></v-slider>
+                      <v-slider label="assumed sold $" v-bind:min="1000" v-bind:max="10000" v-model="costSold"></v-slider>
                     </v-flex>
                     <v-flex xs3>
                       <v-text-field v-model="costSold" type="number"></v-text-field>
                     </v-flex>
                     <v-flex xs9>
-                      <v-slider label="consumed miles" v-bind:min="100" v-bind:max="10000" v-model="consumedMiles"></v-slider>
+                      <v-slider label="miles consumed(km)" v-bind:min="100" v-bind:max="10000" v-model="consumedMiles"></v-slider>
                     </v-flex>
                     <v-flex xs3>
                       <v-text-field v-model="consumedMiles" type="number"></v-text-field>
