@@ -50,7 +50,7 @@
             </v-card>
 
             <!-- Calc -->
-            <v-card class="e4">
+            <v-card class="e4" v-show=false>
               <v-toolbar class="cyan" dark>
                 <v-toolbar-title>續航計算</v-toolbar-title>
                 <v-spacer></v-spacer>
@@ -80,7 +80,7 @@
                     </v-flex>
                     <!-- Result -->
                     <v-flex xs12>
-                      <h5>預計續航: <span >{{resultDistance}}</span> km</h5>
+                      <h2>預計續航: <span >{{resultDistance}}</span> km</h2>
                     </v-flex>
                   </v-layout>
                 </v-container>
@@ -117,7 +117,7 @@
                     </v-flex>
                     <!-- Result -->
                     <v-flex xs12>
-                      <h5>$: <span >{{resultMiles}}</span> per km</h5>
+                      <h2>$: <span >{{resultMiles}}</span> per km</h5>
                     </v-flex>
                   </v-layout>
                 </v-container>
@@ -160,7 +160,7 @@
       adjustment: 11,
       costOriginal: 3680,
       costSold: 1840,
-      consumedMiles: 1000,
+      consumedMiles: 2000,
     },
     methods: {
       openNewTab: function (url) {
