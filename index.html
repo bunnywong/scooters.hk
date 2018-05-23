@@ -31,13 +31,13 @@
       <!-- <depreciation></depreciation> -->
        <main>
         <v-tabs
-          v-model="active"
           color="cyan"
-          dark
           slider-color="yellow"
+          height="100"
+          grow
         >
           <v-tab>🛴 e-scooters group</v-tab>
-          <v-tab>😂 賣車計數機</v-tab>
+          <v-tab >😂 賣車計數機</v-tab>
           <!-- tab content 1 -->
           <v-tab-item>
             <template v-for="item in items">
@@ -159,6 +159,8 @@
         return Math.round(this.costRemain / this.consumedMiles * 10) / 10
       },
     },
+    mounted () {
+    }
     // components: {
       // 'group-list': group
     // },
