@@ -7,7 +7,6 @@
     window.dataLayer = window.dataLayer || [];
     function gtag(){dataLayer.push(arguments);}
     gtag('js', new Date());
-
     gtag('config', 'UA-119788281-1');
   </script>
   <!-- Google Tag Manager -->
@@ -18,9 +17,9 @@
   })(window,document,'script','dataLayer','GTM-WQJTNVH');</script>
   <!-- End Google Tag Manager -->
   <title>🛴 scooters.hk</title>
- <link href='https://fonts.googleapis.com/css?family=Roboto:300,400,500,700|Material+Icons' rel="stylesheet">
- <link href="https://unpkg.com/vuetify/dist/vuetify.min.css" rel="stylesheet">
- <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link href='https://fonts.googleapis.com/css?family=Roboto:300,400,500,700|Material+Icons' rel="stylesheet">
+  <link href="https://unpkg.com/vuetify/dist/vuetify.min.css" rel="stylesheet">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
 </head>
 <body>
   <!-- Google Tag Manager (noscript) -->
@@ -31,132 +30,75 @@
      <v-app>
       <!-- <depreciation></depreciation> -->
        <main>
-         <v-container>
-           <v-layout row>
-            <v-flex xs12 lg6 offset-lg3>
-              <!-- ***1 -->
-              <!-- <v-card v-show=false> -->
-              <v-card v-show=true>
-                <v-toolbar class="cyan" dark>
-                  <!-- <v-toolbar-side-icon></v-toolbar-side-icon> -->
-                  <v-toolbar-title>e-scooters group in Hong Kong</v-toolbar-title>
-                  <v-spacer></v-spacer>
-                  <v-btn icon>
-                    <!-- <v-icon>search</v-icon> -->
-                  </v-btn>
-                </v-toolbar>
-                <v-list three-line>
-                  <template v-for="item in items">
-                    <v-subheader v-if="item.header" v-text="item.header"></v-subheader>
-                    <v-divider v-else-if="item.divider" v-bind:inset="item.inset"></v-divider>
-                    <v-list-tile avatar v-else v-bind:key="item.title" @click="openNewTab(item.url)">
-                      <v-list-tile-avatar>
-                        <img v-bind:src="item.avatar"></v-list-tile-avatar>
-                      </v-list-tile-avatar>
-                      <v-list-tile-content>
-                        <v-list-tile-title v-html="item.name"></v-list-tile-title>
-                      </v-list-tile-content>
-                    </v-list-tile>
-                  </template>
-                </v-list>
-              </v-card>
-
-              <!-- Calc -->
-              <!-- ***2 -->
-              <v-card class="e4" v-show=false>
-                <v-toolbar class="cyan" dark>
-                  <v-toolbar-title>續航計算</v-toolbar-title>
-                  <v-spacer></v-spacer>
-                </v-toolbar>
-                <v-card-text>
-                  <v-container fluid grid-list-md>
-
-                    <v-layout row wrap>
-                      <!-- Bar & Fill -->
-                      <v-flex xs9>
-                        <v-slider label="volt" v-bind:min="24" v-bind:max="100" v-model="volt"></v-slider>
-                      </v-flex>
-                      <v-flex xs3>
-                        <v-text-field v-model="volt" type="number"></v-text-field>
-                      </v-flex>
-                      <v-flex xs9>
-                        <v-slider label="mAh" v-bind:min="5000" v-bind:max="20000" v-model="mah"></v-slider>
-                      </v-flex>
-                      <v-flex xs3>
-                        <v-text-field v-model="mah" type="number"></v-text-field>
-                      </v-flex>
-                      <v-flex xs9>
-                        <v-slider label="Adjustment" v-bind:min="10" v-bind:max="12" v-model="adjustment"></v-slider>
-                      </v-flex>
-                      <v-flex xs3>
-                        <v-text-field v-model="adjustment" type="number"></v-text-field>
-                      </v-flex>
-                      <!-- Result -->
-                      <v-flex xs12>
-                        <h2>預計續航: <span >{{resultDistance}}</span> km</h2>
-                      </v-flex>
-                    </v-layout>
-                  </v-container>
-                </v-card-text>
-              </v-card>
-
-              <!-- ***3 -->
-              <v-card class="e4">
-                <v-toolbar class="cyan" dark>
-                  <v-toolbar-title>😂 賣車計數機</v-toolbar-title>
-                  <v-spacer></v-spacer>
-                </v-toolbar>
-                <v-card-text>
-                  <v-container fluid grid-list-md>
-
-                    <v-layout row wrap>
-                      <!-- Bar & Fill -->
-                      <v-flex xs9>
-                        <v-slider label="購入價 $" v-bind:min="1000" v-bind:max="10000" v-model="costOriginal"></v-slider>
-                      </v-flex>
-                      <v-flex xs3>
-                        <v-text-field v-model="costOriginal" type="number"></v-text-field>
-                      </v-flex>
-                      <v-flex xs9>
-                        <v-slider label="折舊 %" v-bind:min="0" v-bind:max="100" v-model="depreciation"></v-slider>
-                      </v-flex>
-                      <v-flex xs3>
-                        <v-text-field v-model="depreciation" type="number"></v-text-field>
-                      </v-flex>
-                      <v-flex xs9>
-                        <v-slider label="賣出價 $" v-model="costRemain" disabled></v-slider>
-                      </v-flex>
-                      <v-flex xs3>
-                        <v-text-field v-model="costRemain" type="number" disabled></v-text-field>
-                      </v-flex>
-                      <v-flex xs9>
-                        <v-slider label="已消耗公里" v-bind:min="100" v-bind:max="10000" v-model="consumedMiles"></v-slider> </v-flex>
-                      <v-flex xs3>
-                        <v-text-field v-model="consumedMiles" type="number"></v-text-field>
-                      </v-flex>
-                      <!-- Result -->
-                      <v-flex xs12>
-                        <h2>平均每公里消費 $<span>{{resultMiles}}</span></h5>
-                      </v-flex>
-                    </v-layout>
-                  </v-container>
-                </v-card-text>
-              </v-card>
-
-
-            </v-flex>
-          </v-layout>
-         </v-container>
-
+        <v-tabs
+          v-model="active"
+          color="cyan"
+          dark
+          slider-color="yellow"
+        >
+          <v-tab>🛴 e-scooters group</v-tab>
+          <v-tab>😂 賣車計數機</v-tab>
+          <!-- tab content 1 -->
+          <v-tab-item>
+            <template v-for="item in items">
+              <v-subheader v-if="item.header" v-text="item.header"></v-subheader>
+              <v-divider v-else-if="item.divider" v-bind:inset="item.inset"></v-divider>
+              <v-list-tile avatar v-else v-bind:key="item.title" @click="openNewTab(item.url)">
+                <v-list-tile-avatar>
+                  <img v-bind:src="item.avatar"></v-list-tile-avatar>
+                </v-list-tile-avatar>
+                <v-list-tile-content>
+                  <v-list-tile-title v-html="item.name"></v-list-tile-title>
+                </v-list-tile-content>
+              </v-list-tile>
+            </template>
+          </v-tab-item>
+          <!-- tab content 2 -->
+          <v-tab-item>
+             <v-card>
+              <v-card-text>
+                <v-container fluid grid-list-md>
+                  <v-layout row wrap>
+                    <!-- Bar & Fill -->
+                    <v-flex xs9>
+                      <v-slider label="購入價 $" v-bind:min="1000" v-bind:max="10000" v-model="costOriginal"></v-slider>
+                    </v-flex>
+                    <v-flex xs3>
+                      <v-text-field v-model="costOriginal" type="number"></v-text-field>
+                    </v-flex>
+                    <v-flex xs9>
+                      <v-slider label="折舊 %" v-bind:min="0" v-bind:max="100" v-model="depreciation"></v-slider>
+                    </v-flex>
+                    <v-flex xs3>
+                      <v-text-field v-model="depreciation" type="number"></v-text-field>
+                    </v-flex>
+                    <v-flex xs9>
+                      <v-slider label="賣出價 $" v-model="costRemain" disabled></v-slider>
+                    </v-flex>
+                    <v-flex xs3>
+                      <v-text-field v-model="costRemain" type="number" disabled></v-text-field>
+                    </v-flex>
+                    <v-flex xs9>
+                      <v-slider label="已消耗公里" v-bind:min="100" v-bind:max="10000" v-model="consumedMiles"></v-slider> </v-flex>
+                    <v-flex xs3>
+                      <v-text-field v-model="consumedMiles" type="number"></v-text-field>
+                    </v-flex>
+                    <!-- Result -->
+                    <v-flex xs12>
+                      <h2>平均每公里消費 $<span>{{ resultMiles }}</span></h5>
+                    </v-flex>
+                  </v-layout>
+                </v-container>
+              </v-card-text>
+            </v-card>
+          </v-tab-item>
+        </v-tabs>
        </main>
      </v-app>
   </div>
   <script src="https://unpkg.com/vue/dist/vue.js"></script>
   <script src="https://unpkg.com/vuetify/dist/vuetify.js"></script>
   <script>
-  // import Depreciation from './component/depreciation.vue'
-  // import Depreciation from './component/depreciation'
-
    new Vue({
     el: '#app',
     data: {
@@ -181,13 +123,13 @@
       mah: 6600,
       adjustment: 11,
       // default as e-unicycle
-      costOriginal: 3680,
-      depreciation: 50,
-      consumedMiles: 4000,
+      // costOriginal: 3680,
+      // depreciation: 50,
+      // consumedMiles: 4000,
       // default as e-scooters
-      // costOriginal: 2300,
-      // depreciation: 57,
-      // consumedMiles: 2000,
+      costOriginal: 2300,
+      depreciation: 57,
+      consumedMiles: 2000,
     },
     components: {
       // 'depreciation': Depreciation,
